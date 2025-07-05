@@ -282,7 +282,7 @@ const PatientDetailView = () => {
                                 <span className={`status-badge status-${r.status.toLowerCase()}`}>{r.status}</span>
                             </div>
                             <p><strong>Result:</strong> {r.result || 'Pending'}</p>
-                            {r.reportUrl && <a href={`https://13.61.190.197:5000${r.reportUrl}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">View Full Report</a>}
+                            {r.reportUrl && <a href={`https://hms-backend-uoai.onrender.com${r.reportUrl}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">View Full Report</a>}
                             <small>Ordered by: Dr. {r.doctor?.firstName} {r.doctor?.lastName}</small>
                         </div>
                     )) : <p>No lab reports found.</p>}

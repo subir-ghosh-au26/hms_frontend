@@ -186,7 +186,7 @@ const LabTechnicianDashboard = () => {
                                                 </td>
                                                 <td><div className="test-info-cell"><div className="test-name">{test.testName}</div><div className="test-sub-info">Ref: Dr. {test.doctor?.firstName} {test.doctor?.lastName}</div></div></td>
                                                 <td><div className="completion-info-cell"><div>{new Date(test.completedAt).toLocaleString()}</div><div className="test-sub-info">By: {test.completedBy?.firstName}</div></div></td>
-                                                <td><div className="action-buttons-group">{test.reportUrl && <a href={`https://13.61.190.197:5000${test.reportUrl}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">View Upload</a>}<button onClick={() => handleDownloadReport(test)} className="btn btn-info btn-sm">Download PDF</button></div></td>
+                                                <td><div className="action-buttons-group">{test.reportUrl && <a href={`https://hms-backend-uoai.onrender.com${test.reportUrl}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">View Upload</a>}<button onClick={() => handleDownloadReport(test)} className="btn btn-info btn-sm">Download PDF</button></div></td>
                                             </tr>
                                         ))
                                     ) : (

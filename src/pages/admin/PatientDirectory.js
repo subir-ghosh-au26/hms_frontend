@@ -228,7 +228,7 @@ const PatientDirectory = () => {
                                                 <span>{r.testName}</span>
                                                 <div className="action-buttons-group">
                                                     <span className={`status-badge status-${r.status.toLowerCase()}`}>{r.status}</span>
-                                                    {r.reportUrl && <a href={`https://13.61.190.197:5000${r.reportUrl}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">View Upload</a>}
+                                                    {r.reportUrl && <a href={`https://hms-backend-uoai.onrender.com${r.reportUrl}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">View Upload</a>}
                                                     {r.status === 'Completed' && <button onClick={() => handleDownloadLabReport(r)} className="btn btn-info btn-sm">Download PDF</button>}
                                                 </div>
                                             </div>

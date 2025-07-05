@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const patientApi = axios.create({
-    baseURL: 'https://13.61.190.197/api',
+    baseURL: 'https://hms-backend-uoai.onrender.com/api',
 });
 
 // This interceptor ONLY deals with the patient token.
