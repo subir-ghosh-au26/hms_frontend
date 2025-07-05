@@ -1,0 +1,214 @@
+:root {
+  --primary-gradient: linear-gradient(45deg, #4f46e5, #7c3aed);
+  --primary-color: #4f46e5;
+  --primary-light: rgba(79, 70, 229, 0.1);
+
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --secondary-color: #64748b;
+
+  --bg-color: #f3f4f6; /* Light gray background */
+  --surface-color: rgba(255, 255, 255, 0.7); /* White glass */
+  --surface-blur: 8px;
+
+  --text-color-dark: #111827;
+  --text-color-medium: #374151;
+  --text-color-light: #6b7280;
+
+  --border-color: rgba(229, 231, 235, 0.8); /* Lighter border */
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* --- 2. Dark Theme --- */
+/* When the body has the attribute [data-theme="dark"], these variables will override the :root ones */
+body[data-theme="dark"] {
+  --primary-gradient: linear-gradient(45deg, #6366f1, #8b5cf6);
+  --primary-color: #6366f1;
+  --primary-light: rgba(99, 102, 241, 0.15);
+
+  /* Keep accent colors vibrant */
+  --success-color: #22c55e;
+  --danger-color: #f43f5e;
+  --warning-color: #f97316;
+  --info-color: #38bdf8;
+  --secondary-color: #94a3b8;
+
+  --bg-color: #111827; /* Very dark blue/gray */
+  --surface-color: rgba(30, 41, 59, 0.7); /* Dark slate glass */
+  --surface-blur: 10px;
+
+  --text-color-dark: #f8fafc; /* Light gray for main text */
+  --text-color-medium: #cbd5e1;
+  --text-color-light: #94a3b8;
+
+  --border-color: rgba(55, 65, 81, 0.5); /* Darker border */
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* --- 2. BASE STYLES --- */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  color: var(--text-color-dark);
+} /* === STUNNING NURSE DASHBOARD STYLES === */
+
+.nurse-dashboard {
+  padding: 2.5rem;
+}
+
+/* --- 1. Header --- */
+.nurse-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.nurse-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-color-dark);
+}
+.nurse-header p {
+  font-size: 1.1rem;
+  color: var(--text-color-light);
+  margin-top: 0.5rem;
+}
+
+/* --- 2. Patient Queue --- */
+.patient-queue-container h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color-medium);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.patient-queue {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* --- 3. Patient Task Card --- */
+.patient-task-card {
+  background: var(--surface-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+  transition: box-shadow 0.2s;
+}
+.patient-task-card:hover {
+  box-shadow: var(--box-shadow);
+}
+
+.card-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+}
+.patient-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.patient-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.patient-name {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-color-dark);
+}
+.patient-details {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+}
+
+.card-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.expand-icon {
+  font-size: 1.2rem;
+  color: var(--text-color-light);
+}
+
+/* --- 4. Expanded Vitals Form --- */
+.card-details-expanded {
+  border-top: 1px solid var(--border-color);
+  padding: 1.5rem;
+  background-color: rgba(
+    243,
+    244,
+    246,
+    0.5
+  ); /* A slightly different background */
+  animation: slide-in-down 0.4s ease-out;
+}
+@keyframes slide-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.vitals-form .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.vitals-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.vitals-form .message {
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.vitals-form .message.success {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+.vitals-form .message.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-color-light);
+  font-style: italic;
+  background: var(--surface-color);
+  border-radius: var(--border-radius-lg);
+}

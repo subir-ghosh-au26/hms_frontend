@@ -1,0 +1,232 @@
+:root {
+  --primary-gradient: linear-gradient(45deg, #4f46e5, #7c3aed);
+  --primary-color: #4f46e5;
+  --primary-light: rgba(79, 70, 229, 0.1);
+
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --secondary-color: #64748b;
+
+  --bg-color: #f3f4f6; /* Light gray background */
+  --surface-color: rgba(255, 255, 255, 0.7); /* White glass */
+  --surface-blur: 8px;
+
+  --text-color-dark: #111827;
+  --text-color-medium: #374151;
+  --text-color-light: #6b7280;
+
+  --border-color: rgba(229, 231, 235, 0.8); /* Lighter border */
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* --- 2. Dark Theme --- */
+/* When the body has the attribute [data-theme="dark"], these variables will override the :root ones */
+body[data-theme="dark"] {
+  --primary-gradient: linear-gradient(45deg, #6366f1, #8b5cf6);
+  --primary-color: #6366f1;
+  --primary-light: rgba(99, 102, 241, 0.15);
+
+  /* Keep accent colors vibrant */
+  --success-color: #22c55e;
+  --danger-color: #f43f5e;
+  --warning-color: #f97316;
+  --info-color: #38bdf8;
+  --secondary-color: #94a3b8;
+
+  --bg-color: #111827; /* Very dark blue/gray */
+  --surface-color: rgba(30, 41, 59, 0.7); /* Dark slate glass */
+  --surface-blur: 10px;
+
+  --text-color-dark: #f8fafc; /* Light gray for main text */
+  --text-color-medium: #cbd5e1;
+  --text-color-light: #94a3b8;
+
+  --border-color: rgba(55, 65, 81, 0.5); /* Darker border */
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* --- 2. BASE STYLES --- */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  color: var(--text-color-dark);
+} /* === STUNNING MY APPOINTMENTS PAGE STYLES === */
+
+.my-appointments-page {
+  padding: 2.5rem;
+}
+
+.my-appointments-header {
+  margin-bottom: 2rem;
+}
+.my-appointments-header h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+.my-appointments-header p {
+  font-size: 1.1rem;
+  color: var(--text-color-light);
+  margin-top: 0.25rem;
+}
+
+/* Reusing the dashboard-tabs style */
+.dashboard-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+.dashboard-tabs button {
+  padding: 1rem 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color-light);
+  position: relative;
+}
+.dashboard-tabs button.active {
+  color: var(--primary-color);
+}
+.dashboard-tabs button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+/* --- Appointment Card Grid --- */
+.appointments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.appointment-history-card {
+  background: var(--surface-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+  overflow: hidden; /* Important for the status bar and rounded corners */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.appointment-history-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-status-bar {
+  height: 6px;
+  width: 100%;
+}
+/* Define status colors - add these to index.css or keep here */
+:root {
+  --status-color-approved: var(--success-color);
+  --status-color-pending: var(--warning-color);
+  --status-color-completed: var(--primary-color);
+  --status-color-cancelled: var(--secondary-color);
+  --status-color-rejected: var(--danger-color);
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-main-info h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.2rem;
+  color: var(--text-color-dark);
+}
+.doctor-specialization {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+.appointment-reason {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-color-medium);
+  font-style: italic;
+}
+
+.card-time-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: right;
+}
+.time-item {
+  text-align: center;
+  border-right: 1px solid var(--border-color);
+  padding-right: 1rem;
+}
+.time-day {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-color-dark);
+}
+.time-month {
+  display: block;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--text-color-light);
+}
+
+.time-details span {
+  font-weight: 500;
+  color: var(--text-color-medium);
+}
+.time-details p {
+  margin: 0.25rem 0 0 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-footer {
+  padding: 0.75rem 1.5rem;
+  background: #f8f9fa;
+  border-top: 1px solid var(--border-color);
+  text-align: right;
+}
+
+.empty-message {
+  grid-column: 1 / -1; /* Make it span the full grid width */
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-color-light);
+  font-style: italic;
+  background: var(--surface-color);
+  border-radius: var(--border-radius-lg);
+}
+.appointment-history-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Make the link a block element */
+}
+.view-details-prompt {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}

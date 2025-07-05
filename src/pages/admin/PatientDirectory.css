@@ -1,0 +1,261 @@
+:root {
+  --primary-gradient: linear-gradient(45deg, #4f46e5, #7c3aed);
+  --primary-color: #4f46e5;
+  --primary-light: rgba(79, 70, 229, 0.1);
+
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --secondary-color: #64748b;
+
+  --bg-color: #f3f4f6; /* Light gray background */
+  --surface-color: rgba(255, 255, 255, 0.7); /* White glass */
+  --surface-blur: 8px;
+
+  --text-color-dark: #111827;
+  --text-color-medium: #374151;
+  --text-color-light: #6b7280;
+
+  --border-color: rgba(229, 231, 235, 0.8); /* Lighter border */
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* --- 2. Dark Theme --- */
+/* When the body has the attribute [data-theme="dark"], these variables will override the :root ones */
+body[data-theme="dark"] {
+  --primary-gradient: linear-gradient(45deg, #6366f1, #8b5cf6);
+  --primary-color: #6366f1;
+  --primary-light: rgba(99, 102, 241, 0.15);
+
+  /* Keep accent colors vibrant */
+  --success-color: #22c55e;
+  --danger-color: #f43f5e;
+  --warning-color: #f97316;
+  --info-color: #38bdf8;
+  --secondary-color: #94a3b8;
+
+  --bg-color: #111827; /* Very dark blue/gray */
+  --surface-color: rgba(30, 41, 59, 0.7); /* Dark slate glass */
+  --surface-blur: 10px;
+
+  --text-color-dark: #f8fafc; /* Light gray for main text */
+  --text-color-medium: #cbd5e1;
+  --text-color-light: #94a3b8;
+
+  --border-color: rgba(55, 65, 81, 0.5); /* Darker border */
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* --- 2. BASE STYLES --- */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  color: var(--text-color-dark);
+} /* === ADMIN PATIENT DIRECTORY STYLING === */
+
+.patient-directory-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr; /* A wider sidebar for the patient list */
+  min-height: calc(100vh - 60px); /* Assuming a 60px top navbar if present */
+  padding: 0;
+}
+@media (max-width: 1024px) {
+  .patient-directory-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- 1. Sidebar / Master List --- */
+.directory-sidebar {
+  background-color: #f8f9fa;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+}
+.directory-sidebar-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.directory-sidebar-header h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+}
+/* Re-using search styles */
+.search-bar-container {
+  position: relative;
+}
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color-light);
+}
+.history-search-input {
+  width: 100%;
+  box-sizing: border-box; /* ... other styles from previous CSS */
+}
+
+.patient-master-list {
+  overflow-y: auto;
+  flex-grow: 1;
+  padding: 1rem;
+}
+.patient-list-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.patient-list-card:hover {
+  background-color: #eef2f7;
+}
+.patient-list-card.selected {
+  background-color: var(--primary-light);
+  border-color: var(--primary-color);
+}
+
+.patient-list-card .patient-avatar {
+  /* Reuse from other dashboards */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.patient-list-card.selected .patient-avatar {
+  background: var(--primary-color);
+  color: white;
+}
+.patient-list-card .patient-info {
+  display: flex;
+  flex-direction: column;
+}
+.patient-list-card .patient-name {
+  font-weight: 600;
+  color: var(--text-color-dark);
+}
+.patient-list-card .patient-uhid {
+  font-size: 0.85rem;
+  color: var(--text-color-light);
+}
+
+/* --- 2. Main Content / Detail View --- */
+.directory-main-content {
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+.ehr-details-view {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.ehr-details-header {
+  margin-bottom: 1rem;
+}
+.ehr-details-header h2 {
+  font-size: 2.25rem;
+  margin: 0;
+}
+.ehr-details-header p {
+  font-size: 1.1rem;
+  color: var(--text-color-light);
+  margin-top: 0.5rem;
+}
+
+/* Re-use EHR Section styles from PatientDetailView.css */
+.ehr-section {
+  background: var(--surface-color);
+  backdrop-filter: blur(var(--surface-blur));
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+}
+.ehr-section h3 {
+  margin-top: 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Re-use placeholder styles from other dashboards */
+.placeholder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius-lg);
+  color: var(--text-color-light);
+  text-align: center;
+}
+.placeholder-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.record-card {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.record-card:last-child {
+  margin-bottom: 0;
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.record-header span:first-child {
+  font-weight: 600;
+  color: var(--text-color-dark);
+}
+/* Re-using this from other dashboards */
+.action-buttons-group {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.action-buttons-group .btn-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.record-card ul {
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 1rem 0;
+}
+.record-card small {
+  display: block;
+  margin-top: 1rem;
+  color: var(--text-color-light);
+  font-style: italic;
+  text-align: right;
+}

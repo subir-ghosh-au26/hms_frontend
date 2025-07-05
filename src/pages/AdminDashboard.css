@@ -1,0 +1,175 @@
+/* === STUNNING ADMIN DASHBOARD LAYOUT & STYLING === */
+
+/* --- 1. Main Layout using CSS Grid --- */
+/* This creates the fundamental sidebar + main content structure */
+.admin-dashboard-layout {
+  display: grid;
+  /* Fixed sidebar width of 260px, the rest of the space is flexible */
+  grid-template-columns: 260px 1fr;
+  /* Ensures the layout takes up the full viewport height below the main navbar */
+  height: calc(100vh - 60px);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- 2. Sidebar Styling --- */
+.admin-sidebar {
+  background: var(--surface-color);
+  backdrop-filter: blur(var(--surface-blur));
+  -webkit-backdrop-filter: blur(var(--surface-blur));
+  border-right: 1px solid var(--border-color);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Allow sidebar to scroll if it has too many links */
+}
+
+.sidebar-header h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  margin: 0 0 1.5rem 0;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  color: var(--text-color-medium);
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.sidebar-nav .nav-link:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+/* This class is automatically added by React Router's NavLink */
+.sidebar-nav .nav-link.active {
+  background: var(--primary-gradient);
+  color: white;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+  font-weight: 600;
+}
+
+.sidebar-nav .nav-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0; /* Prevents icon from shrinking */
+}
+
+.sidebar-footer {
+  margin-top: auto; /* Pushes the footer to the bottom */
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+}
+
+/* --- 3. Main Content Area Styling --- */
+.admin-main-content {
+  padding: 2.5rem;
+  overflow-y: auto; /* Allows the main content to scroll independently */
+  background-color: var(--bg-color);
+}
+
+.admin-header {
+  margin-bottom: 2.5rem;
+}
+
+.admin-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-color-dark);
+}
+
+.admin-header p {
+  font-size: 1.1rem;
+  color: var(--text-color-light);
+  margin-top: 0.5rem;
+}
+
+/* --- 4. Widgets Grid Styling --- */
+.admin-widgets-grid {
+  display: grid;
+  /* Create responsive columns that are at least 400px wide */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.admin-widget-card {
+  /* This uses the global .dashboard-card style as a base */
+  background: var(--surface-color);
+  backdrop-filter: blur(var(--surface-blur));
+  -webkit-backdrop-filter: blur(var(--surface-blur));
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.admin-widget-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.admin-widget-card h3 {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+}
+
+/* Helper class from previous steps */
+.form-group-row {
+  display: flex;
+  gap: 1.5rem;
+}
+.form-group-row > .form-group {
+  flex: 1;
+}
+.message {
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.message.success {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+.message.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+/* --- 5. Responsive Adjustments --- */
+@media (max-width: 1024px) {
+  .admin-dashboard-layout {
+    grid-template-columns: 1fr; /* Stack sidebar on top of content */
+    height: auto; /* Let content determine the height */
+  }
+  .admin-sidebar {
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+}

@@ -1,0 +1,205 @@
+/* === STUNNING ACCOUNTANT DASHBOARD STYLES === */
+
+.accountant-dashboard {
+  padding: 2.5rem;
+}
+
+/* --- 1. Header --- */
+.accountant-header {
+  margin-bottom: 2.5rem;
+}
+.accountant-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-color-dark);
+}
+.accountant-header p {
+  font-size: 1.1rem;
+  color: var(--text-color-light);
+  margin-top: 0.5rem;
+}
+
+/* --- 2. Stat Cards --- */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.accountant-stat-card {
+  background: var(--surface-color);
+  backdrop-filter: blur(var(--surface-blur));
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* The color is set via inline style based on the type of stat */
+  border-left: 5px solid;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.accountant-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow);
+}
+.stat-info h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.stat-info p {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color-dark);
+}
+.stat-icon {
+  font-size: 1.5rem;
+  color: white;
+  height: 44px;
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* --- 3. History/Billing Table Section --- */
+.history-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.history-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--surface-color);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+.history-controls h3 {
+  margin: 0;
+  color: var(--text-color-dark);
+}
+.search-bar-container {
+  position: relative;
+}
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color-light);
+}
+.history-search-input {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  width: 300px;
+  font-size: 1rem;
+  background-color: var(--bg-color);
+}
+.history-search-input:focus {
+  background-color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-light);
+  outline: none;
+}
+.history-table-container {
+  overflow-x: auto;
+}
+
+/* --- 4. Professional Table Styling --- */
+/* This reuses the same pattern for consistency */
+.professional-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  min-width: 900px;
+}
+.professional-table thead {
+  background: none;
+}
+.professional-table th {
+  text-align: left;
+  padding: 0 1.5rem 1rem 1.5rem;
+  color: var(--text-color-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+.professional-table tbody tr {
+  background: var(--surface-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.professional-table tbody tr:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow);
+}
+.professional-table td {
+  padding: 1.25rem 1.5rem;
+  vertical-align: middle;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.02); /* Faint line for internal separation in glassmorphism */
+}
+.professional-table td:first-child {
+  border-top-left-radius: var(--border-radius-lg);
+  border-bottom-left-radius: var(--border-radius-lg);
+}
+.professional-table td:last-child {
+  border-top-right-radius: var(--border-radius-lg);
+  border-bottom-right-radius: var(--border-radius-lg);
+}
+
+.empty-row td {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-color-light);
+  font-style: italic;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* --- 5. Modal Specific Styles --- */
+.line-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+}
+.line-items-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.line-items-list li:last-child {
+  border-bottom: none;
+}
+.line-items-list li:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.bill-summary {
+  text-align: right;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+.bill-summary p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+.bill-summary strong {
+  color: var(--text-color-medium);
+}

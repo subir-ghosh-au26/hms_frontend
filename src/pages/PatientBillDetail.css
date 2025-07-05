@@ -1,0 +1,210 @@
+:root {
+  --primary-gradient: linear-gradient(45deg, #4f46e5, #7c3aed);
+  --primary-color: #4f46e5;
+  --primary-light: rgba(79, 70, 229, 0.1);
+
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --secondary-color: #64748b;
+
+  --bg-color: #f3f4f6; /* Light gray background */
+  --surface-color: rgba(255, 255, 255, 0.7); /* White glass */
+  --surface-blur: 8px;
+
+  --text-color-dark: #111827;
+  --text-color-medium: #374151;
+  --text-color-light: #6b7280;
+
+  --border-color: rgba(229, 231, 235, 0.8); /* Lighter border */
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* --- 2. Dark Theme --- */
+/* When the body has the attribute [data-theme="dark"], these variables will override the :root ones */
+body[data-theme="dark"] {
+  --primary-gradient: linear-gradient(45deg, #6366f1, #8b5cf6);
+  --primary-color: #6366f1;
+  --primary-light: rgba(99, 102, 241, 0.15);
+
+  /* Keep accent colors vibrant */
+  --success-color: #22c55e;
+  --danger-color: #f43f5e;
+  --warning-color: #f97316;
+  --info-color: #38bdf8;
+  --secondary-color: #94a3b8;
+
+  --bg-color: #111827; /* Very dark blue/gray */
+  --surface-color: rgba(30, 41, 59, 0.7); /* Dark slate glass */
+  --surface-blur: 10px;
+
+  --text-color-dark: #f8fafc; /* Light gray for main text */
+  --text-color-medium: #cbd5e1;
+  --text-color-light: #94a3b8;
+
+  --border-color: rgba(55, 65, 81, 0.5); /* Darker border */
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* --- 2. BASE STYLES --- */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  color: var(--text-color-dark);
+} /* === PATIENT BILL DETAIL PAGE STYLES === */
+
+/* --- 1. Header Section --- */
+.bill-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.bill-detail-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color-dark);
+}
+
+.bill-detail-header p {
+  margin: 0.25rem 0 0 0;
+  color: var(--text-color-light);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+}
+
+.bill-detail-header .header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.header-actions .btn .icon {
+  font-size: 1.2rem;
+}
+
+/* --- 2. Financial Summary Cards --- */
+.financial-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.summary-card {
+  background: var(--surface-color);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  border: 1px solid var(--border-color);
+  border-top: 4px solid var(--primary-color);
+}
+
+.summary-card h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color-light);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-card p {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-color-dark);
+  line-height: 1.1;
+}
+
+/* --- 3. Details Sections (for tables) --- */
+.details-section {
+  margin-bottom: 3rem;
+}
+
+.details-section h3 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color-medium);
+}
+
+.history-table-container {
+  overflow-x: auto; /* Makes tables responsive on small screens */
+  background: var(--surface-color);
+  border-radius: var(--border-radius-lg);
+  padding: 1rem;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+}
+
+/* This assumes .professional-table and its styles are in a shared/global CSS file.
+   If not, you would copy those styles here. */
+.history-table-container .professional-table {
+  box-shadow: none;
+  background: transparent;
+}
+.history-table-container .professional-table td,
+.history-table-container .professional-table th {
+  white-space: nowrap; /* Prevents text from wrapping in table cells */
+}
+
+.payment-section {
+  background: var(--primary-light); /* A light, attention-grabbing background */
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  border: 1px solid rgba(79, 70, 229, 0.2);
+}
+
+.payment-section h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+/* Reusing global form classes but can add specifics if needed */
+.payment-section .dashboard-form-container {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.payment-section .form-group-row {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-end; /* Align button and inputs nicely */
+}
+.payment-section .form-group {
+  flex: 1;
+}
+
+.payment-section .message {
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.payment-section .message.success {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+.payment-section .message.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}

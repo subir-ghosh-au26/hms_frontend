@@ -1,0 +1,106 @@
+/* === STUNNING ADMIN ANALYTICS DASHBOARD STYLES === */
+
+.analytics-dashboard {
+  /* Uses the global .dashboard-page for base padding */
+  padding: 2.5rem;
+}
+
+/* --- 1. Header --- */
+.analytics-dashboard h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-color-dark);
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 1rem;
+}
+
+/* --- 2. KPI Stat Cards --- */
+.stat-cards-container {
+  display: grid;
+  /* Creates a responsive grid that fits as many cards as possible, each at least 220px wide */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  background: var(--surface-color);
+  backdrop-filter: blur(var(--surface-blur));
+  -webkit-backdrop-filter: blur(var(--surface-blur));
+  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-right: 1.5rem;
+  background-color: var(--primary-light);
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0; /* Prevents the icon from shrinking */
+}
+
+.stat-info h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap; /* Prevents title from wrapping */
+}
+
+.stat-info p {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-color-dark);
+}
+
+/* --- 3. Charts Section --- */
+.charts-container {
+  display: grid;
+  /* By default, a 2:1 ratio for the charts */
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+/* On smaller screens, stack the charts vertically */
+@media (max-width: 992px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-card {
+  background: var(--surface-color);
+  backdrop-filter: blur(var(--surface-blur));
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  /* This ensures the chart scales correctly within the card */
+  position: relative;
+  height: 400px;
+}
+
+.chart-card h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-color-medium);
+}

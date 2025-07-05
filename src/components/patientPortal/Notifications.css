@@ -1,0 +1,126 @@
+/* Main container for the bell and dropdown */
+.notifications-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* The bell button itself */
+.notifications-bell {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem; /* Makes the bell icon larger */
+  position: relative;
+  color: #495057; /* A soft black for the icon */
+  padding: 0.5rem;
+  transition: color 0.2s;
+}
+
+.notifications-bell:hover {
+  color: #007bff; /* Highlight on hover */
+}
+
+/* The red badge for unread notifications */
+.unread-badge {
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  background-color: #dc3545; /* A strong red */
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white; /* Creates a nice separation from the bell */
+  animation: bounce-in 0.5s ease;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* The dropdown menu */
+.notifications-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px; /* Space between bell and dropdown */
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  width: 350px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1010; /* Ensure it's above other content */
+  animation: slide-down 0.3s ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Individual notification items inside the dropdown */
+.notification-item {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item p {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+.notification-item small {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+/* Styling for unread vs read items */
+.notification-item.unread {
+  background-color: #e7f1ff; /* A light blue to indicate it's new */
+  font-weight: 500;
+}
+
+.notification-item.read {
+  background-color: #fff;
+}
+
+.notification-item:not(.unread):hover {
+  background-color: #f8f9fa; /* Hover effect for read items */
+}
+
+/* Style for error message inside dropdown */
+.notification-item.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  text-align: center;
+}

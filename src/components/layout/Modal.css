@@ -1,0 +1,215 @@
+:root {
+  --primary-gradient: linear-gradient(45deg, #4f46e5, #7c3aed);
+  --primary-color: #4f46e5;
+  --primary-light: rgba(79, 70, 229, 0.1);
+
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --secondary-color: #64748b;
+
+  --bg-color: #f3f4f6; /* Light gray background */
+  --surface-color: rgba(255, 255, 255, 0.7); /* White glass */
+  --surface-blur: 8px;
+
+  --text-color-dark: #111827;
+  --text-color-medium: #374151;
+  --text-color-light: #6b7280;
+
+  --border-color: rgba(229, 231, 235, 0.8); /* Lighter border */
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* --- 2. Dark Theme --- */
+/* When the body has the attribute [data-theme="dark"], these variables will override the :root ones */
+body[data-theme="dark"] {
+  --primary-gradient: linear-gradient(45deg, #6366f1, #8b5cf6);
+  --primary-color: #6366f1;
+  --primary-light: rgba(99, 102, 241, 0.15);
+
+  /* Keep accent colors vibrant */
+  --success-color: #22c55e;
+  --danger-color: #f43f5e;
+  --warning-color: #f97316;
+  --info-color: #38bdf8;
+  --secondary-color: #94a3b8;
+
+  --bg-color: #111827; /* Very dark blue/gray */
+  --surface-color: rgba(30, 41, 59, 0.7); /* Dark slate glass */
+  --surface-blur: 10px;
+
+  --text-color-dark: #f8fafc; /* Light gray for main text */
+  --text-color-medium: #cbd5e1;
+  --text-color-light: #94a3b8;
+
+  --border-color: rgba(55, 65, 81, 0.5); /* Darker border */
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* --- 2. BASE STYLES --- */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  color: var(--text-color-dark);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 0;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.modal-close-button {
+  background: transparent;
+  border: none;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  line-height: 1;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+/* === MODAL CSS WITH SCROLLING BODY === */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem; /* Add padding to prevent modal from touching screen edges */
+}
+
+.modal-content {
+  background: white;
+  padding: 0; /* Remove padding from the main container */
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px; /* Let's make the modal a bit wider for this form */
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-out;
+  /* --- NEW: Flexbox layout for the modal itself --- */
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh; /* Don't allow the modal to be taller than 90% of the viewport height */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* --- NEW: Prevent this part from shrinking --- */
+  flex-shrink: 0;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.modal-close-button {
+  background: transparent;
+  border: none;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  line-height: 1;
+}
+
+/* --- THE KEY CHANGE FOR SCROLLING --- */
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto; /* Show a vertical scrollbar ONLY if the content overflows */
+  flex-grow: 1; /* Allow this section to grow and take up available space */
+}
+
+/* --- Optional: Add a styled scrollbar (for Webkit browsers like Chrome/Safari) --- */
+.modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}

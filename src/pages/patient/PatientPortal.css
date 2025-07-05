@@ -1,0 +1,376 @@
+:root {
+  --primary-gradient: linear-gradient(45deg, #4f46e5, #7c3aed);
+  --primary-color: #4f46e5;
+  --primary-light: rgba(79, 70, 229, 0.1);
+
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --secondary-color: #64748b;
+
+  --bg-color: #f3f4f6; /* Light gray background */
+  --surface-color: rgba(255, 255, 255, 0.7); /* White glass */
+  --surface-blur: 8px;
+
+  --text-color-dark: #111827;
+  --text-color-medium: #374151;
+  --text-color-light: #6b7280;
+
+  --border-color: rgba(229, 231, 235, 0.8); /* Lighter border */
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* --- 2. Dark Theme --- */
+/* When the body has the attribute [data-theme="dark"], these variables will override the :root ones */
+body[data-theme="dark"] {
+  --primary-gradient: linear-gradient(45deg, #6366f1, #8b5cf6);
+  --primary-color: #6366f1;
+  --primary-light: rgba(99, 102, 241, 0.15);
+
+  /* Keep accent colors vibrant */
+  --success-color: #22c55e;
+  --danger-color: #f43f5e;
+  --warning-color: #f97316;
+  --info-color: #38bdf8;
+  --secondary-color: #94a3b8;
+
+  --bg-color: #111827; /* Very dark blue/gray */
+  --surface-color: rgba(30, 41, 59, 0.7); /* Dark slate glass */
+  --surface-blur: 10px;
+
+  --text-color-dark: #f8fafc; /* Light gray for main text */
+  --text-color-medium: #cbd5e1;
+  --text-color-light: #94a3b8;
+
+  --border-color: rgba(55, 65, 81, 0.5); /* Darker border */
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* --- 2. BASE STYLES --- */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  color: var(--text-color-dark);
+}
+/* Login Page Specific */
+.patient-portal-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+.patient-login-box {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+.patient-login-box h2 {
+  margin-bottom: 0.5rem;
+}
+.patient-login-box .error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+.input-group {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #495057;
+}
+.input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.staff-login-link {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Main Portal Layout */
+.patient-portal-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.patient-portal-content {
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: #f8f9fa;
+}
+.patient-portal-page {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.patient-portal-page h2 {
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Dashboard Widgets */
+.dashboard-widget {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+.appointment-list {
+  list-style: none;
+  padding: 0;
+}
+.appointment-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+.appointment-list li:last-child {
+  border: none;
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.quick-link-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.quick-link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Records & Bills Page */
+.record-section,
+.bill-summary-card {
+  margin-bottom: 2rem;
+}
+.record-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+.record-meta {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 1rem;
+}
+.view-report-link {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.bill-summary-card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+.bill-summary-card .outstanding p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.itemized-table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.itemized-table th,
+.itemized-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.appointment-list li {
+  /* ... existing styles ... */
+  align-items: flex-start; /* Aligns items to the top */
+  flex-direction: column; /* Stacks items vertically on small screens */
+  gap: 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .appointment-list li {
+    flex-direction: row; /* Side-by-side on larger screens */
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.appointment-reason {
+  display: block;
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-style: italic;
+  margin-left: 0.5rem;
+}
+
+.appointment-time {
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+}
+
+.info-widget {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.record-card {
+  /* ... existing styles for the card ... */
+  display: flex;
+  flex-direction: column; /* Ensure items stack vertically */
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.record-header span:first-child {
+  font-weight: 600;
+  color: var(--text-color-dark);
+}
+
+.record-card p {
+  margin: 0.5rem 0;
+}
+
+.record-meta {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 1rem;
+  display: block;
+}
+
+/* --- NEW STYLES FOR THE ACTIONS FOOTER --- */
+.record-actions {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 1rem;
+}
+
+/* A helper class for small buttons if you don't have it globally */
+.btn.btn-sm {
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+}
+
+.patient-header {
+  margin-bottom: 2.5rem;
+}
+.patient-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.patient-header p {
+  font-size: 1.1rem;
+  color: var(--text-color-light);
+}
+
+/* --- NEW WIDGET STYLES --- */
+.info-widget {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  padding: 1.5rem 2rem;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.action-card {
+  /* Reuses .dashboard-card from global styles if available */
+  /* Or you can style it here */
+  background: var(--surface-color);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
+}
+.action-card h3 {
+  margin-top: 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.action-card .message {
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.action-card .message.success {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+.action-card .message.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}

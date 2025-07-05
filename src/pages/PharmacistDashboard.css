@@ -1,0 +1,462 @@
+:root {
+  --primary-gradient: linear-gradient(45deg, #4f46e5, #7c3aed);
+  --primary-color: #4f46e5;
+  --primary-light: rgba(79, 70, 229, 0.1);
+
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --secondary-color: #64748b;
+
+  --bg-color: #f3f4f6; /* Light gray background */
+  --surface-color: rgba(255, 255, 255, 0.7); /* White glass */
+  --surface-blur: 8px;
+
+  --text-color-dark: #111827;
+  --text-color-medium: #374151;
+  --text-color-light: #6b7280;
+
+  --border-color: rgba(229, 231, 235, 0.8); /* Lighter border */
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* --- 2. Dark Theme --- */
+/* When the body has the attribute [data-theme="dark"], these variables will override the :root ones */
+body[data-theme="dark"] {
+  --primary-gradient: linear-gradient(45deg, #6366f1, #8b5cf6);
+  --primary-color: #6366f1;
+  --primary-light: rgba(99, 102, 241, 0.15);
+
+  /* Keep accent colors vibrant */
+  --success-color: #22c55e;
+  --danger-color: #f43f5e;
+  --warning-color: #f97316;
+  --info-color: #38bdf8;
+  --secondary-color: #94a3b8;
+
+  --bg-color: #111827; /* Very dark blue/gray */
+  --surface-color: rgba(30, 41, 59, 0.7); /* Dark slate glass */
+  --surface-blur: 10px;
+
+  --text-color-dark: #f8fafc; /* Light gray for main text */
+  --text-color-medium: #cbd5e1;
+  --text-color-light: #94a3b8;
+
+  --border-color: rgba(55, 65, 81, 0.5); /* Darker border */
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* --- 2. BASE STYLES --- */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  color: var(--text-color-dark);
+} /* === STUNNING PHARMACIST DASHBOARD STYLES === */
+
+.pharmacist-dashboard {
+  /* Override page padding and use a CSS Grid layout */
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 320px; /* Flexible main content, fixed sidebar */
+  min-height: calc(100vh - 60px);
+  gap: 0;
+}
+@media (max-width: 1024px) {
+  .pharmacist-dashboard {
+    grid-template-columns: 1fr; /* Stack on smaller screens */
+  }
+}
+
+/* --- 1. Main Content Panel --- */
+.pharmacist-main-content {
+  padding: 2.5rem;
+  background-color: #f8f9fa; /* A slightly different background for contrast */
+  overflow-y: auto;
+}
+.pharmacist-header {
+  margin-bottom: 2rem;
+}
+.pharmacist-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-color-dark);
+}
+.pharmacist-header p {
+  font-size: 1.1rem;
+  color: var(--text-color-light);
+  margin-top: 0.5rem;
+}
+.prescription-queue h3 {
+  margin-bottom: 1.5rem;
+}
+.queue-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* --- 2. Prescription Card Styling --- */
+.prescription-card {
+  background: var(--surface-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+.prescription-card .card-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.patient-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.patient-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.patient-name {
+  font-weight: 600;
+  display: block;
+}
+.patient-uhid {
+  font-size: 0.85rem;
+  color: var(--text-color-light);
+}
+.prescription-meta {
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+}
+.prescription-meta strong {
+  color: var(--text-color-medium);
+}
+
+.medications-list {
+  padding: 1.5rem;
+}
+.medications-list h4 {
+  margin: 0 0 1rem 0;
+}
+.medications-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.medications-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: var(--border-radius-md);
+}
+.med-name {
+  font-weight: 500;
+}
+.med-details {
+  color: var(--text-color-light);
+}
+
+.prescription-card .card-footer {
+  padding: 1rem 1.5rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* --- 3. Sidebar Panel --- */
+.pharmacist-sidebar {
+  background: var(--surface-color);
+  backdrop-filter: blur(var(--surface-blur));
+  border-left: 1px solid var(--border-color);
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.pharmacist-sidebar h3 {
+  margin-top: 0;
+}
+.widgets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.inventory-widget {
+  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.inventory-widget:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.inventory-widget.danger {
+  background: linear-gradient(45deg, #ef4444, #f87171);
+}
+.inventory-widget.warning {
+  background: linear-gradient(45deg, #f59e0b, #fbbf24);
+}
+
+.widget-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: block;
+}
+.widget-title {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+.full-width-btn {
+  width: 100%;
+  margin-top: auto; /* Pushes button to the bottom */
+}
+
+/* --- 4. Helper & Message Styles --- */
+.empty-message {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-color-light);
+  font-style: italic;
+  background: #f8f9fa;
+  border-radius: var(--border-radius-lg);
+}
+.message.success {
+  padding: 1rem;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+.dashboard-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--border-color);
+  margin-top: 1.5rem; /* Add some space after the header */
+}
+.dashboard-tabs button {
+  padding: 1rem 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color-light);
+  position: relative;
+  transition: color 0.2s;
+}
+.dashboard-tabs button:hover {
+  color: var(--text-color-dark);
+}
+.dashboard-tabs button.active {
+  color: var(--primary-color);
+}
+.dashboard-tabs button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+.tab-content {
+  padding-top: 2rem;
+}
+
+/* --- HISTORY TABLE STYLING --- */
+.history-table-container {
+  background: var(--surface-color);
+  border-radius: var(--border-radius-lg);
+  padding: 1rem;
+  box-shadow: var(--box-shadow);
+}
+.history-table-container .dashboard-table {
+  box-shadow: none; /* Remove shadow since the container has it */
+  background: transparent;
+}
+.history-table-container .btn-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+/* --- HISTORY TAB STYLES --- */
+.history-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.history-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--surface-color);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+.history-controls h3 {
+  margin: 0;
+  color: var(--text-color-dark);
+}
+
+.search-bar-container {
+  position: relative;
+}
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color-light);
+}
+.history-search-input {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  width: 300px;
+  font-size: 1rem;
+  background-color: #f8f9fa;
+  transition: all 0.2s;
+}
+.history-search-input:focus {
+  background-color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-light);
+  outline: none;
+}
+
+/* --- PROFESSIONAL TABLE STYLING --- */
+.history-table-container {
+  overflow-x: auto;
+}
+.professional-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  min-width: 900px;
+}
+.professional-table thead {
+  background: none;
+}
+.professional-table th {
+  text-align: left;
+  padding: 0 1.5rem 1rem 1.5rem;
+  color: var(--text-color-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  border: none;
+}
+.professional-table tbody tr {
+  background: var(--surface-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.professional-table tbody tr:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow);
+}
+.professional-table td {
+  padding: 1.25rem 1.5rem;
+  vertical-align: middle;
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+}
+.professional-table td:first-child {
+  border-top-left-radius: var(--border-radius-lg);
+  border-bottom-left-radius: var(--border-radius-lg);
+}
+.professional-table td:last-child {
+  border-top-right-radius: var(--border-radius-lg);
+  border-bottom-right-radius: var(--border-radius-lg);
+}
+
+/* Enhanced Cell Styles */
+.patient-cell-enhanced {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.patient-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.patient-name {
+  font-weight: 600;
+  color: var(--text-color-dark);
+}
+.patient-sub-info {
+  font-size: 0.85rem;
+  color: var(--text-color-light);
+  margin-top: 2px;
+}
+
+.info-cell {
+  font-weight: 500;
+}
+.info-cell .sub-info {
+  font-size: 0.85rem;
+  color: var(--text-color-light);
+  margin-top: 2px;
+}
+
+.empty-row td {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-color-light);
+  font-style: italic;
+  background: transparent;
+  box-shadow: none;
+}
+.error-text {
+  color: var(--danger-color);
+  font-style: italic;
+}
+.action-buttons-group .btn-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+}
